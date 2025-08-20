@@ -8,7 +8,7 @@ if "messages" not in st.session_state:
     ]
 
 # Create Groq client
-client = Groq(api_key='secret_key')
+client = Groq(api_key='${{ secrets.API_KEY }}')
 
 # Title
 st.title("Chat with Alexa")
@@ -42,4 +42,5 @@ for msg in st.session_state.messages[1:]:  # Skip system prompt
     if msg["role"] == "user":
         st.markdown(f"*You:* {msg['content']}")
     elif msg["role"] == "assistant":
+
         st.markdown(f"*Alexa:* {msg['content']}")
